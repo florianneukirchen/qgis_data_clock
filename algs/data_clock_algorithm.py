@@ -40,6 +40,7 @@ from qgis.core import (QgsProcessing,
                        QgsProcessingParameterEnum,
                        QgsProcessingParameterString,
                        QgsProcessingParameterBoolean,
+                       QgsProcessingParameterDefinition
                        )
 
 import plotly.express as px
@@ -82,6 +83,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
     INVERTCOLORSCALE = 'INVERTCOLORSCALE'
     TITLE = 'TITLE'
     COLORBAR = 'COLORBAR'
+    LOCALE = 'LOCALE'
 
 
     def getModeLabels(self):
@@ -167,8 +169,15 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             tr('Title'),
             optional=True))         
     
-            
+        locale_param = QgsProcessingParameterString(
+            self.LOCALE,
+            tr('Locale'),
+            optional=True)
 
+        locale_param.setFlags(locale_param.flags() | QgsProcessingParameterDefinition.Flag.FlagAdvanced)
+        
+        self.addParameter(locale_param)
+            
         self.addParameter(QgsProcessingParameterFileDestination(
                 self.OUTPUT,
                 tr('Data Clock'),
@@ -190,6 +199,8 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
         mode = self.modes[self.parameterAsEnum(parameters, self.MODE, context)]
         agg = self.aggfunctions[self.parameterAsEnum(parameters, self.AGG, context)]
         aggfield = self.parameterAsString(parameters, self.AGGFIELD, context)
+        localestr = self.parameterAsString(parameters, self.LOCALE, context)
+        localestr = localestr.strip()
 
         colorscale = self.colorscales[self.parameterAsEnum(parameters, self.COLORSCALE, context)]
         invertcolorscale = self.parameterAsBool(parameters, self.INVERTCOLORSCALE, context)
@@ -209,7 +220,19 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
 
         df = layer_to_df(source, neededfields)
 
+        # Optionally change locale
+        if localestr != "":
+            try:
+                locale.setlocale(locale.LC_ALL, localestr + '.utf8')
+                feedback.pushInfo(tr("locale set to {}").format(localestr))
+            except locale.Error:
+                feedback.reportError(tr("Locale not found: {}").format(localestr))
+                feedback.pushInfo(tr("Continue with default locale"))
 
+        fig = dataclock(df, datefield, mode=mode, agg=agg, agg_column=aggfield, title=title, colorscale=colorscale, colorbar=colorbar)
+        
+        # Reset locale to default
+        locale.setlocale(locale.LC_ALL, '')
 
         fig.write_html(output)
 
