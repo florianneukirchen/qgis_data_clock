@@ -39,7 +39,10 @@ from qgis.core import (QgsProcessing,
                        QgsProcessingParameterField,
                        QgsProcessingParameterEnum,
                        QgsProcessingParameterString,
+                       QgsProcessingParameterBoolean,
                        )
+
+import plotly.express as px
 
 from data_clock.algs.i18n import tr
 from data_clock.factory import layer_to_df, dataclock
@@ -75,6 +78,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
     AGG = 'AGG'
     AGGFIELD = 'AGGFIELD'
     COLORSCALE = 'COLORSCALE'
+    INVERTCOLORSCALE = 'INVERTCOLORSCALE'
     TITLE = 'TITLE'
     COLORBAR = 'COLORBAR'
 
@@ -93,6 +97,9 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
         # Add parameters
 
         self.aggfunctions = ['count', 'sum', 'mean', 'median', 'min', 'max', 'std', 'first', 'last']
+        self.colorscales = px.colors.named_colorscales()
+        self.colorscales.sort()
+
 
         self.addParameter(
             QgsProcessingParameterFeatureSource(
@@ -108,6 +115,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             self.getModeLabels(),
             defaultValue=0)) 
 
+
         self.addParameter(
             QgsProcessingParameterField(
                 self.DATEFIELD,
@@ -117,6 +125,13 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             )
         )
 
+        self.addParameter(QgsProcessingParameterEnum(
+            self.AGG,
+            tr('Aggregation function'),
+            self.aggfunctions,
+            defaultValue=0,
+            optional=True))
+        
         self.addParameter(
             QgsProcessingParameterField(
                 self.AGGFIELD,
@@ -128,10 +143,22 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
         )
 
         self.addParameter(QgsProcessingParameterEnum(
-            self.AGG,
-            tr('Aggregation function'),
-            self.aggfunctions,
-            defaultValue=0,
+            self.COLORSCALE,
+            tr('Color Scale'),
+            self.colorscales,
+            defaultValue=self.colorscales.index('plasma'),
+            optional=True)) 
+
+        self.addParameter(QgsProcessingParameterBoolean(
+            self.INVERTCOLORSCALE,
+            tr('Invert Color Scale'),
+            defaultValue=False,
+            optional=True))
+
+        self.addParameter(QgsProcessingParameterBoolean(
+            self.COLORBAR,
+            tr('Show a color bar'),
+            defaultValue=False,
             optional=True))
 
         self.addParameter(QgsProcessingParameterString(
@@ -163,6 +190,13 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
         agg = self.aggfunctions[self.parameterAsEnum(parameters, self.AGG, context)]
         aggfield = self.parameterAsString(parameters, self.AGGFIELD, context)
 
+        colorscale = self.colorscales[self.parameterAsEnum(parameters, self.COLORSCALE, context)]
+        invertcolorscale = self.parameterAsBool(parameters, self.INVERTCOLORSCALE, context)
+        colorbar = self.parameterAsBool(parameters, self.COLORBAR, context)
+
+        if invertcolorscale:
+            colorscale = colorscale + '_r'
+
         title = self.parameterAsString(parameters, self.TITLE, context)
         if title.strip() == '':
             title = None
@@ -173,7 +207,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             neededfields.append(aggfield)
 
         df = layer_to_df(source, neededfields)
-        fig = dataclock(df, datefield, mode=mode, agg=agg, agg_column=aggfield, title=title)
+        fig = dataclock(df, datefield, mode=mode, agg=agg, agg_column=aggfield, title=title, colorscale=colorscale, colorbar=colorbar)
 
         fig.write_html(output)
 
