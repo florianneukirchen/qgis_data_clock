@@ -43,6 +43,7 @@ from qgis.core import (QgsProcessing,
                        )
 
 import plotly.express as px
+import locale
 
 from data_clock.algs.i18n import tr
 from data_clock.factory import layer_to_df, dataclock
@@ -207,7 +208,8 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             neededfields.append(aggfield)
 
         df = layer_to_df(source, neededfields)
-        fig = dataclock(df, datefield, mode=mode, agg=agg, agg_column=aggfield, title=title, colorscale=colorscale, colorbar=colorbar)
+
+
 
         fig.write_html(output)
 
