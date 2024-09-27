@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 
+# NOTE Docs generated with pdoc3: pdoc factory -o doc
 
 def dataclock(df, date_column, mode="YM", agg='count', agg_column=None, colorscale=None, title=None, colorbar=False):
     """Figure factory for data clock plots
