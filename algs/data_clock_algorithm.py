@@ -51,10 +51,9 @@ from qgis_data_clock.factory import layer_to_df, dataclock
 
 
 class DataClockAlgorithm(QgsProcessingAlgorithm):
-    """
-    Data Clock, plot seasonal time series data as a polar heat map
+    """Data Clock processing algorithm
 
-    For visualisation of seasonal/cyclic time series data.
+    Plot  of seasonal/cyclic time series data as a polar heat map.
     The rings of the chart show the larger, cyclic time unit 
     (e.g. year), while each ring is divided into
     smaller units shown as wedges.
@@ -66,7 +65,11 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
     The following combinations of rings and wedges are implemented:
     Year-Month, Year-Week, Year-Day, Week-Day, Day-Hour.
 
-    The result is a html file with an interactive plotly chart.
+
+    Returns
+    -------
+    HTML file
+        Interactive plotly chart as HTML.
     """
 
     # Constants used to refer to parameters and outputs. They will be
