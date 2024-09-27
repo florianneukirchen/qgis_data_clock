@@ -10,7 +10,7 @@ version=0.1
 author=Florian Neukirchen
 email=mail@riannek.de
 
-about=Create a polar plot of seasonal / cyclic time series. Requires plotly and pandas.
+about=Polar heatmap plot of seasonal / cyclic time series. Requires plotly and pandas.
 
 tracker=http://bugs
 repository=http://repo
