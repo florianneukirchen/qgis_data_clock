@@ -17,6 +17,12 @@ The result is a HTML file with an interactive Plotly chart.
 
 ![Data clock example](doc/pirates.png)
 
+## Installation
+
+Copy or git clone the plugin folder into your QGIS plugins folder (on Linux: `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`) and enable the plugin in QGIS (Plugins - Manage and Install Plugins). Eventually, "Show also Experimental Plugins" must be checked.
+
+Requirements: [Pandas](https://pandas.pydata.org/) and [Plotly](https://plotly.com/python/) can be installed with pip or conda. They are also included in some Linux Distributions.
+
 ## Usage
 
 The tool can be found in the processing toolbox.
