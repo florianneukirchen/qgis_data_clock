@@ -35,7 +35,7 @@ Functions
         Name of a numerical column for aggregation with parameter agg
     colorscale : str, optional
         Name of a plotly color scale, e.g. 'Viridis', 'Magma', 'YlGn'.
-        See [Build-In Sequential Color scales](https://plotly.com/python/builtin-colorscales/#builtin-sequential-color-scales)
+        See https://plotly.com/python/builtin-colorscales/#builtin-sequential-color-scales
     title : str, optional
         Title of the plot
     colorbar : bool, optional
