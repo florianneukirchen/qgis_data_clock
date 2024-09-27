@@ -46,8 +46,8 @@ from qgis.core import (QgsProcessing,
 import plotly.express as px
 import locale
 
-from data_clock.algs.i18n import tr
-from data_clock.factory import layer_to_df, dataclock
+from qgis_data_clock.algs.i18n import tr
+from qgis_data_clock.factory import layer_to_df, dataclock
 
 
 class DataClockAlgorithm(QgsProcessingAlgorithm):

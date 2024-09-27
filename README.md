@@ -41,7 +41,7 @@ The output is a html HTML an interactive Plotly chart. It can be opened from the
 It is possible to call the figure factory from the python console. This allows to change the plot with Plotly methods such as `fig.update_layout()` and `fig.update_traces()`.
 
 ```python
-import data_clock.factory as dcf
+import qgis_data_clock.factory as dcf
 import pandas as pd
 import plotly.graph_objects as go
 

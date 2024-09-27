@@ -38,13 +38,13 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	data_clock.py 
+	qgis_data_clock.py 
 
 PLUGINNAME = data_clock
 
 PY_FILES = \
 	__init__.py \
-	data_clock.py 
+	qgis_data_clock.py 
 
 UI_FILES = 
 
