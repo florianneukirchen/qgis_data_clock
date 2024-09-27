@@ -15,6 +15,7 @@ The result is a HTML file with an interactive Plotly chart.
 
 > Requires [Pandas](https://pandas.pydata.org/) and [Plotly](https://plotly.com/python/)
 
+![Data clock example](doc/pirates.png)
 
 ## Usage
 
