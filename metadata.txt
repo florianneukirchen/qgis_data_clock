@@ -10,10 +10,10 @@ version=0.1
 author=Florian Neukirchen
 email=mail@riannek.de
 
-about=Polar heatmap plot of seasonal / cyclic time series. Requires plotly and pandas.
+about=Polar heatmap plots of seasonal / cyclic time series. Requires plotly and pandas.
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/florianneukirchen/qgis_data_clock/issues
+repository=https://github.com/florianneukirchen/qgis_data_clock/
 # End of mandatory metadata
 
 # Recommended items:
@@ -23,9 +23,9 @@ hasProcessingProvider=yes
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python
+tags=python,d3,plotly,plot,chart,temporal,timeseries,time series,vector,attribute,dataviz,datavis
 
-homepage=http://homepage
+homepage=https://github.com/florianneukirchen/qgis_data_clock
 category=Analysis
 icon=icon.png
 # experimental flag
