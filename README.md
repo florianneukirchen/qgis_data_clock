@@ -17,11 +17,18 @@ The result is a HTML file with an interactive Plotly chart.
 
 ![Data clock example](doc/pirates.png)
 
+
+## Resources 
+- QGIS Plugins Repository: [https://plugins.qgis.org/plugins/qgis_data_clock/](https://plugins.qgis.org/plugins/qgis_data_clock/)
+- Source Code: [https://github.com/florianneukirchen/qgis_data_clock](https://github.com/florianneukirchen/qgis_data_clock)
+- Bug Tracker: [https://github.com/florianneukirchen/qgis_data_clock/issues](https://github.com/florianneukirchen/qgis_data_clock/issues)
+
 ## Installation
-
-Copy or git clone the plugin folder into your QGIS plugins folder (on Linux: `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`) and enable the plugin in QGIS (Plugins - Manage and Install Plugins). Eventually, "Show also Experimental Plugins" must be checked.
-
 Requirements: [Pandas](https://pandas.pydata.org/) and [Plotly](https://plotly.com/python/) can be installed with pip or conda. They are also included in some Linux Distributions.
+
+The plugin is in the QGIS plugin registry and can be installed in QGIS with `Plugins` - `Manage and Install Plugins`.  "Show also Experimental Plugins" must be checked.
+
+Source Code: Copy or git clone the plugin folder into your QGIS plugins folder (on Linux: `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/`) and enable the plugin in QGIS (Plugins - Manage and Install Plugins). Eventually, "Show also Experimental Plugins" must be checked.
 
 ## Usage
 
@@ -41,7 +48,7 @@ Parameters:
 Advanced Parameters
 - Locale: Overwrite locale to change the language of month / weekday names. Use a string such as "de_DE" or "en_US". However, the locale names depend on your operating system, and it only works with installed locales. (Only tested on Linux)
 
-The output is a html HTML an interactive Plotly chart. It can be opened from the QGIS Results Viewer.
+The output is a HTML with an interactive Plotly chart. It can be opened from the QGIS Results Viewer.
 
 ## Usage from the Python Console
 
