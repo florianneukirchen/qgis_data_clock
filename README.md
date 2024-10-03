@@ -58,6 +58,8 @@ API documentation:
 - [factory.layer_to_df()](doc/factory/todataframe.md) 
 - [factory.dataclock()](doc/factory/dataclockfactory.md) 
 
+The following example gives a data plot chart in dark mode, with title centered an in larger font size:
+
 ```python
 import qgis_data_clock.factory as dcf
 import pandas as pd
@@ -74,6 +76,23 @@ fig = dcf.dataclock(
     colorscale="viridis", 
     colorbar=True)
 
+fig.update_layout(
+    template="plotly_dark",
+    title_font_size=28, 
+    title_x=0.5)
+
 fig.show() # Opens the figure in a browser
 fig.to_html("my_chart.html") # Writes the html file 
 ```
+
+The language is your current locale, you can change it by changing the locale before calling `dataclock()`:
+```python
+import locale
+
+locale.setlocale(locale.LC_ALL, 'de_DE.utf8') # Switch to German
+fig = dcf.dataclock(
+    df,
+    "my datefield")
+locale.setlocale(locale.LC_ALL, '') # Reset locale to default
+```
+
