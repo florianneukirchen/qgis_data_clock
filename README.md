@@ -52,7 +52,7 @@ The output is a HTML with an interactive Plotly chart. It can be opened from the
 
 ## Usage from the Python Console
 
-It is possible to call the figure factory functions from the python console. This allows to change the plot with Plotly methods such as `fig.update_layout()` and `fig.update_traces()`.
+It is possible to call the figure factory functions from the QGIS python console. This allows to change the plot with Plotly methods such as `fig.update_layout()` and `fig.update_traces()`.
 
 API documentation:
 - [factory.layer_to_df()](doc/factory/todataframe.md) 
