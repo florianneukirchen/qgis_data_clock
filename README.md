@@ -35,7 +35,7 @@ Source Code: Copy or git clone the plugin folder into your QGIS plugins folder (
 The tool can be found in the processing toolbox.
 
 Parameters:
-- Input Layer: Vector Layer. You can use a QGIS expression to filter the data
+- Input Layer: Vector Layer, should have at least one Date or DateTime field. You can use a QGIS expression to filter the data, e.g.: `"mydatefield" >= '2020-01-01' AND "mydatefield" < '2024-01-01'`
 - Mode: combinations of rings and wedges: Year-Month, Year-Week, Year-Day, Week-Day, Day-Hour.
 - Date field: field in the attribute table of the input layer, type must be Date or DateTime 
 - Aggregation function: Binning with an aggregate function over the field of parameter "Aggregation field". Default is count of features
