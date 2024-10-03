@@ -11,7 +11,7 @@ The data is binned into these wedges and the color is determined by the count of
 The following combinations of rings and wedges are implemented:
 Year-Month, Year-Week, Year-Day, Week-Day, Day-Hour.
 
-The result is a HTML file with an interactive Plotly chart.
+The result is a HTML file with an interactive Plotly chart (including a tooltip on hover).
 
 > Requires [Pandas](https://pandas.pydata.org/) and [Plotly](https://plotly.com/python/)
 
