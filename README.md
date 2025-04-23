@@ -58,7 +58,7 @@ API documentation:
 - [factory.layer_to_df()](doc/factory/todataframe.md) 
 - [factory.dataclock()](doc/factory/dataclockfactory.md) 
 
-The following example gives a data plot chart in dark mode, with title centered an in larger font size:
+The following example gives a data clock chart in dark mode, with title centered and in larger font size:
 
 ```python
 import qgis_data_clock.factory as dcf
