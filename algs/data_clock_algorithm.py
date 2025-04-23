@@ -111,7 +111,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             QgsProcessingParameterFeatureSource(
                 self.INPUT,
                 self.tr('Input layer'),
-                [QgsProcessing.TypeVectorAnyGeometry]
+                [QgsProcessing.SourceType.TypeVectorAnyGeometry]
             )
         )
         
@@ -126,7 +126,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             QgsProcessingParameterField(
                 self.DATEFIELD,
                 self.tr('Date field'),
-                type=QgsProcessingParameterField.DateTime,
+                type=QgsProcessingParameterField.DataType.DateTime,
                 parentLayerParameterName=self.INPUT
             )
         )
@@ -142,7 +142,7 @@ class DataClockAlgorithm(QgsProcessingAlgorithm):
             QgsProcessingParameterField(
                 self.AGGFIELD,
                 self.tr('Aggregation field'),
-                type=QgsProcessingParameterField.Numeric,
+                type=QgsProcessingParameterField.DataType.Numeric,
                 parentLayerParameterName=self.INPUT,
                 optional=True
             )
