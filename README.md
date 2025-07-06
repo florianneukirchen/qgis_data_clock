@@ -96,3 +96,7 @@ fig = dcf.dataclock(
 locale.setlocale(locale.LC_ALL, '') # Reset locale to default
 ```
 
+## Changelog
+
+### 0.2 (07-2025)
+- Support Qt6 / QGIS 4

@@ -6,8 +6,9 @@
 [general]
 name=Data Clock
 qgisMinimumVersion=3.34
+supportsQt6=True
 description=Polar plot of seasonal data
-version=0.1
+version=0.2
 author=Florian Neukirchen
 email=mail@riannek.de
 
@@ -21,7 +22,8 @@ repository=https://github.com/florianneukirchen/qgis_data_clock/
 
 hasProcessingProvider=yes
 # Uncomment the following line and add your changelog:
-# changelog=
+# changelog=0.2
+    - Support Qt6 / QGIS 4
 
 # Tags are comma separated with spaces allowed
 tags=python,d3,plotly,plot,chart,temporal,timeseries,time series,vector,attribute,dataviz,datavis

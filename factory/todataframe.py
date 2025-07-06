@@ -1,5 +1,5 @@
 import pandas as pd
-from qgis.PyQt.QtCore import QDate, QDateTime
+from qgis.PyQt.QtCore import QDate, QDateTime, QTime
 from qgis.core import QgsVectorLayer
 
 def layer_to_df(layer, fields=None):
@@ -35,7 +35,12 @@ def layer_to_df(layer, fields=None):
 
     # Convert fields with QDate and QDateTime to datetime
     for col in df.columns:
-        if isinstance(df[col].loc[0], QDate) or isinstance(df[col].loc[0], QDateTime):
-            df[col] = df[col].apply(lambda x: QDateTime(x).toPyDateTime())
-    
+        if isinstance(df[col].loc[0], QDateTime):
+            df[col] = df[col].apply(lambda x: x.toPyDateTime())
+        elif isinstance(df[col].loc[0], QDate):
+            df[col] = df[col].apply(lambda x: QDateTime(x, QTime(0, 0)).toPyDateTime())
+        elif isinstance(df[col].loc[0], QTime):
+            today = QDate.currentDate()
+            df[col] = df[col].apply(lambda x: QDateTime(today, x).toPyDateTime())
+
     return df
