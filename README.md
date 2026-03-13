@@ -98,5 +98,8 @@ locale.setlocale(locale.LC_ALL, '') # Reset locale to default
 
 ## Changelog
 
+## 0.3 (03-2026)
+- Support  QGIS 4.x
+
 ### 0.2 (07-2025)
-- Support Qt6 / QGIS 4
+- Support Qt6 
