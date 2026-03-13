@@ -9,7 +9,7 @@ qgisMinimumVersion=3.34
 qgisMaximumVersion=4.99
 supportsQt6=True
 description=Polar plot of seasonal data
-version=0.2
+version=0.3
 author=Florian Neukirchen
 email=mail@riannek.de
 
